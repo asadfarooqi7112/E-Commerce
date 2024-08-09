@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import Electronics from "./pages/Electronics";
-import TrackOrder from "./pages/TrackOrder";
+/*import TrackOrder from "./pages/TrackOrder";*/
 import ContactUs from "./pages/ContactUs";
 import ProductDetails from "./pages/subPages/ProductDetails";
 import SearchResult from "./pages/subPages/SearchResult";
@@ -48,7 +48,7 @@ function App() {
           <Route path="electronics/mobile-laptop-stands" element={<MobileLaptopStands/>}/>
 
 
-          <Route path="/track-order" element = {<TrackOrder/>} />
+          {/*<Route path="/track-order" element = {<TrackOrder/>} /> */}
           <Route path="/contact-us" element = {<ContactUs/>} />
           <Route path="/checkout" element = {<CheckOut />} />
           <Route path="/product-details/:id" element={<ProductDetails productsData = {productsData}/>} />
