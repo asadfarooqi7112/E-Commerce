@@ -1,0 +1,39 @@
+.container {
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 5px;
+max-width: 400px;
+text-align: center;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+margin-top: 20px;
+background-color: #fff;
+}
+  
+.button {
+margin: 5px;
+padding: 10px 15px;
+border: none;
+cursor: pointer;
+background-color: transparent;
+color: black;
+font-size: 16px;
+position: relative;
+outline: none;
+}
+  
+.activeButton {
+  border-bottom: 2px solid black; /* Underline only on the active button */
+}
+
+.input {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  width: 100%;
+}
+  
+.h2 {
+  margin-bottom: 20px;
+}
+  
