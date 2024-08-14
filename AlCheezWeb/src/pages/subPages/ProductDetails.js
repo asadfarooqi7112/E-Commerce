@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+
+import { Helmet } from 'react-helmet-async';
+
 import ImageGallery from '../../components/ImageGallery';
 import SubmitReview from '../../components/SubmitReview';
 import DisplayReview from '../../components/DisplayReview';
@@ -14,6 +17,8 @@ import { useMediaQuery } from '../../hooks/useMediaQuery';
 import ImageSlider from '../../components/ImageSlider';
 import { useProductsContext } from '../../context/ProductsContext';
 import Loading from "../../components/Loading"
+
+
 
 const ProductDetails = (props) => {
   const [isDescriptionShown, setIsDescriptionShown] = useState(false);
@@ -81,9 +86,6 @@ const ProductDetails = (props) => {
     );
 });
 
-
-console.log("updated",cartItems)
-
   function handleIsWriteAReview(){
     setFocusDiv(true)
     setIsWriteReview(prev=>!prev)
@@ -108,8 +110,85 @@ console.log("updated",cartItems)
     return <Loading/>;
   }
 
+  console.log("assd",product.description.replace(/<\/?[^>]+(>|$)/g, ""))
+
   return (
     <div className='product_details_page_container '>
+      <Helmet>
+        <html lang="en" />
+        <title>{product.name}</title>
+        <meta name="description" content={product.description.replace(/<\/?[^>]+(>|$)/g, "")} />
+        <link rel="canonical" href={`https://www.alcheez.com/product-details/${params.id}`}/>
+        <meta name="keywords" content={`${product.name}, buy ${product.name} online, ${product.name} price, alcheez, electronics, headset, headphone, handsfree, earphone, airpods, earbuds, speaker, smart watch, charger, cable, mobile stand, laptop stand, power bank, tech accessories, electronic gadgets, affordable tech, best tech deals, online electronics store`} />
+        <meta name="robots" content="index, follow" />
+        <link rel="icon" href="https://alcheez.com/favicon.ico" />
+
+        {/* Structured Data JSON-LD */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": product.name,
+            "image": product.productimages.map(img => img.image_url),
+            "description": product.description.replace(/<\/?[^>]+(>|$)/g, ""),
+            "sku": product.sku || params.id,
+            "brand": {
+              "@type": "Brand",
+              "name": "No Brand"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": `https://www.alcheez.com/product-details/${params.id}`,
+              "priceCurrency": "PKR",
+              "price": product.sale_price || product.price,
+              "itemCondition": "https://schema.org/NewCondition",
+              "availability": "https://schema.org/InStock",
+              "seller": {
+                "@type": "Organization",
+                "name": "AlCheez"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": totalRating,
+              "reviewCount": reviewsData.length
+            },
+            "review": reviewsData.map((review) => ({
+              "@type": "Review",
+              "author": {
+                "@type": "Person",
+                "name": review.user_name
+              },
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": review.rating,
+                "bestRating": "5"
+              },
+              "reviewBody": review.review_content
+            }))
+          })}
+        </script>
+
+        {/* OG Tags */}
+        {/* https://ogp.me/ */}
+        <meta property="og:title" content={product.name} />
+        <meta property="og:description" content={product.description.replace(/<\/?[^>]+(>|$)/g, "")} />
+        <meta property="og:type" content="product" />
+        <meta property="og:image" content={product.productimages[0].image_url} />
+        <meta property="og:url" content={`https://www.alcheez.com/product-details/${params.id}`} />
+
+        {/* Twitter tags */}
+        {/* https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started */}
+        <meta property="twitter:site" content="@AlCheez" />
+        <meta property="twitter:title" content={product.name} />
+        <meta property="twitter:description" content={product.description.replace(/<\/?[^>]+(>|$)/g, "")} />
+        <meta property="twitter:creator" content="@AlCheez" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:image" content={product.productimages[0].image_url} />
+
+        {/* https://moz.com/blog/meta-referrer-tag */}
+        <meta name="referrer" content="origin-when-crossorigin" />
+      </Helmet>
     <div className='product_details_container'>
       {isSmallDevice 
       ? 

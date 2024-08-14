@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './ContactUs.css';
 
 import { supabase } from '../supabaseClient';
+import { Helmet } from 'react-helmet-async';
 
 export default function ContactUs() {
   const [name, setName] = useState('');
@@ -43,6 +44,33 @@ export default function ContactUs() {
 
   return (
     <div className='contact-us_container'>
+      <Helmet>
+        <html lang="en" />
+        <title>Contact Us | AlCheez</title>
+        <meta name="description" content="Get in touch with AlCheez for support, inquiries, or feedback. Contact us via WhatsApp, email, or leave a message." />
+        <link rel="canonical" href="https://alcheez.com/contact-us" />
+        <meta name="keywords" content="contact, AlCheez, customer support, WhatsApp, email, feedback, inquiries" />
+        <meta name="robots" content="index, follow" />
+        <link rel="icon" href="https://alcheez.com/favicon.ico" />
+
+        {/* OG Tags */}
+        <meta property="og:url" content="https://alcheez.com/contact-us" />
+        <meta property="og:title" content="Contact Us | AlCheez" />
+        <meta property="og:description" content="Get in touch with AlCheez for support, inquiries, or feedback. Contact us via WhatsApp, email, or leave a message." />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://alcheez.com/android-chrome-384x384.png" />
+
+        {/* Twitter tags */}
+        <meta property="twitter:site" content="@AlCheez" />
+        <meta property="twitter:title" content="Contact Us | AlCheez" />
+        <meta property="twitter:description" content="Get in touch with AlCheez for support, inquiries, or feedback. Contact us via WhatsApp, email, or leave a message." />
+        <meta property="twitter:creator" content="@AlCheez" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:image" content="https://alcheez.com/android-chrome-384x384.png" />
+
+        {/* Referrer Policy */}
+        <meta name="referrer" content="origin-when-crossorigin" />
+      </Helmet>
       <h1>Contact Us</h1>
       <p>Whatsapp: 0346 8576853</p>
       <p>Customer Support: alcheez2024@gmail.com</p>

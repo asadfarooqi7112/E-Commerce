@@ -5,13 +5,11 @@ import './SearchBar.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function SearchBar() {
-    const { productsData, setSearchResult, setSearchWord} = useProductsContext();
+    const { productsData, setSearchResult, setSearchWord } = useProductsContext();
     const [input, setInput] = useState("");
     const [debouncedInput, setDebouncedInput] = useState("");
-    const [result, setResult] = useState([])
-    const [isResult, setIsResult] = useState(true)
-
-
+    const [result, setResult] = useState([]);
+    const [isResult, setIsResult] = useState(true);
     const navigate = useNavigate();
     const searchBarRef = useRef(null);
 
@@ -29,12 +27,12 @@ export default function SearchBar() {
         const filteredResults = productsData.filter((data) => {
             return debouncedInput && data.name.toLowerCase().includes(debouncedInput.toLowerCase());
         });
-        setResult(filteredResults);  // Update results state
+        setResult(filteredResults);  
     }, [debouncedInput, productsData]);
 
     const handleClickOutside = (event) => {
         if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
-            setIsResult(false)
+            setIsResult(false);
         }
     };
 
@@ -48,13 +46,13 @@ export default function SearchBar() {
     function handleSelectedResult(id) {
         navigate(`/product-details/${id}`);
         navigate(0);
-        setIsResult(false)
+        setIsResult(false);
         setInput("");
     }
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            navigate("/search-result");
+            navigate(`/search-results?query=${encodeURIComponent(input)}`);
             setSearchResult(result);
             setSearchWord(input);
             setIsResult(false);
@@ -69,17 +67,17 @@ export default function SearchBar() {
                     placeholder='Type to search' 
                     value={input} 
                     onChange={(e) => {
-                        setInput(e.target.value)
-                        setIsResult(true)
+                        setInput(e.target.value);
+                        setIsResult(true);
                     }}
                     onKeyDown={handleKeyDown}
                 />
-                <FaSearch className="search-bar-icon" onClick={()=>{
-                    navigate("/search-result" )
-                    setSearchResult(result)
-                    setSearchWord(input)
-                    setIsResult(false)
-                    }}/>
+                <FaSearch className="search-bar-icon" onClick={() => {
+                    navigate(`/search-results?query=${encodeURIComponent(input)}`);
+                    setSearchResult(result);
+                    setSearchWord(input);
+                    setIsResult(false);
+                }} />
             </div>
             {isResult && <div className="search-results">
                 {result.map((data, index) => (

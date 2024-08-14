@@ -8,6 +8,8 @@ import { supabase } from '../../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 
+import { Helmet } from 'react-helmet-async';
+
 export default function CheckOut() {
   const DeliverCharges = 200;
   const { cartItems, emptyCart } = useShoppingCart();
@@ -53,11 +55,12 @@ export default function CheckOut() {
   const handleSubmit = async (e) => {
   e.preventDefault();
   const form = document.getElementById("checkoutForm");
+
   if (form.reportValidity()){ 
     setLoading(true); // Start loading
+    window.fbq('track', 'Purchase', { currency: "PKR", value: Subtotal });
 
     try {
-      // Insert customer
       const { data: customer, error: customerError } = await supabase
         .from('customers')
         .insert([{
@@ -128,6 +131,19 @@ export default function CheckOut() {
 
   return (
     <div className="checkoutpage_container">
+      <Helmet>
+        <title>Checkout | AlCheez</title>
+        <meta name="description" content="Complete your purchase on AlCheez with our secure checkout process." />
+        <meta name="robots" content="noindex, nofollow" /> {/* Prevents indexing of the checkout page */}
+        <meta property="og:title" content="Checkout - AlCheez" />
+        <meta property="og:description" content="Complete your purchase on AlCheez with our secure checkout process." />
+        <meta property="og:url" content="https://www.alcheez.com/checkout" /> {/* Replace with your checkout page URL */}
+        <meta property="og:image" content="https://alcheez.com/android-chrome-384x384.png" />
+        <meta property="og:type" content="website" />
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:title" content="Checkout - AlCheez" />
+        <meta property="twitter:description" content="Complete your purchase on AlCheez with our secure checkout process." />
+      </Helmet>
       {loading && <div className="loading-overlay"><div className="spinner-border text-primary" role="status"><span className="visually-hidden">Loading...</span></div></div>}
       <form className='customer-details_container' id="checkoutForm">
         <div>
@@ -197,7 +213,7 @@ export default function CheckOut() {
         {!useSameAddress && (
           <ShippingDetail formData={formData} handleChange={handleChange} />
         )}
-        {!isSmallDevice && <button  form="checkoutForm" onClick={handleSubmit} className="btn btn-secondary" style={{ width: "100%", height: "50px", marginTop: "30px" }}>
+        {!isSmallDevice && <button form="checkoutForm" onClick={handleSubmit} className="btn btn-secondary" style={{ width: "100%", height: "50px", marginTop: "30px" }}>
             Complete Order
         </button>}
       </form>

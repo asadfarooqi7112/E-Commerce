@@ -15,6 +15,7 @@
   display:flex;
   justify-content:center;
   align-items:center;
+  flex-wrap: wrap;
   gap: 10px;
 }
 .our-products-single-image-title{
@@ -26,7 +27,7 @@
 
 }
 .our-products-image{
-  width: 200px;
+  width: 194px;
   background-color: skyblue;
 }
 
@@ -70,6 +71,7 @@
   cursor: pointer;
   margin-top: 10px;
   transition: background-color 0.3s;
+  align-self: center;
 }
 .view-all_button:active{
 animation: blink 0.2s ease-in-out 2;

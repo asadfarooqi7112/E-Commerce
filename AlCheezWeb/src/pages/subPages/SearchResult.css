@@ -24,7 +24,6 @@
     color: red; /* or any color you prefer */
     text-align: center;
 }
-
 @media (max-width: 768px) {
     .s-card_container {
         gap: 10px;

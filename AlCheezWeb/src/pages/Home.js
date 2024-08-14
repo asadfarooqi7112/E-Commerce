@@ -16,6 +16,8 @@ import smartWatchLogo from "../images/SmartWatchLogo2-removebg-preview (1).png"
 import chargerCableLogo from "../images/charger-cable-logo-removebg-preview.png"
 import mobileLaptopStandLogo from "../images/mobile-laptop-stand-logo-removebg-preview.png"
 
+import { Helmet } from 'react-helmet-async';
+
 export default function Home(props) {
   const navigate = useNavigate()
   const isSmallDevice = useMediaQuery('(max-width: 768px)');
@@ -38,13 +40,13 @@ export default function Home(props) {
     {url: "https://vqvruapmkpjwdrrhnzfr.supabase.co/storage/v1/object/public/product_images/AdImages/Stands-Smaller-Screen-Ad.png"},
   ]
 
-  const headsetsCardsArray = props.productsData.filter((item) => item.category_id === 1).slice(0, 10).map((item, index) => (<ProductCard key={index} data={item} />));
-  const speakersCardsArray = props.productsData.filter((item) => item.category_id === 2).slice(0, 10).map((item, index) => (<ProductCard key={index} data={item} />));
-  const smartWatchesCardsArray = props.productsData.filter((item) => item.category_id === 3).slice(0, 10).map((item, index) => (<ProductCard key={index} data={item} />));
-  const powerBanksCardsArray = props.productsData.filter((item) => item.category_id === 4).slice(0, 10).map((item, index) => (<ProductCard key={index} data={item} />));
-  const chargersCardsArray = props.productsData.filter((item) => item.category_id === 5).slice(0, 10).map((item, index) => (<ProductCard key={index} data={item} />));
-  const standsCardsArray = props.productsData.filter((item) => item.category_id === 6).slice(0, 10).map((item, index) => (<ProductCard key={index} data={item} />));
-  const proctectsAndCablesCardsArray = props.productsData.filter((item) => item.category_id === 7).slice(0, 10).map((item, index) => (<ProductCard key={index} data={item} />));
+  const headsetsCardsArray = props.productsData.filter((item) => item.category_id === 1).slice(0, 9).map((item, index) => (<ProductCard key={index} data={item} />));
+  const speakersCardsArray = props.productsData.filter((item) => item.category_id === 2).slice(0, 9).map((item, index) => (<ProductCard key={index} data={item} />));
+  const smartWatchesCardsArray = props.productsData.filter((item) => item.category_id === 3).slice(0, 9).map((item, index) => (<ProductCard key={index} data={item} />));
+  const powerBanksCardsArray = props.productsData.filter((item) => item.category_id === 4).slice(0, 9).map((item, index) => (<ProductCard key={index} data={item} />));
+  const chargersCardsArray = props.productsData.filter((item) => item.category_id === 5).slice(0, 9).map((item, index) => (<ProductCard key={index} data={item} />));
+  const standsCardsArray = props.productsData.filter((item) => item.category_id === 6).slice(0, 9).map((item, index) => (<ProductCard key={index} data={item} />));
+  const proctectsAndCablesCardsArray = props.productsData.filter((item) => item.category_id === 7).slice(0, 9).map((item, index) => (<ProductCard key={index} data={item} />));
 
   const openWhatsApp = () => {
     const phoneNumber = '923468576853'; // replace with the actual phone number
@@ -54,6 +56,35 @@ export default function Home(props) {
   }
   return (
     <div className='home_container'>
+      <Helmet>
+        <html lang="en" />
+        <title>Home | AlCheez</title>
+        <meta name="description" content="Welcome to AlCheez, your one-stop shop for the latest electronics, gadgets, and tech accessories. Explore our wide range of products today!" />
+        <link rel="canonical" href="https://alcheez.com/" />
+        <meta name="keywords" content="alcheez, electronics, headset, headphone, handsfree, earphone, airpods, earbuds, speaker, smart watch, charger, cable, mobile stand, laptop stand, power bank, tech accessories, online electronics store" />
+        <meta name="robots" content="index, follow" />
+        <link rel="icon" href="https://alcheez.com/favicon.ico" />
+
+        {/* OG Tags */}
+        {/* https://ogp.me/ */}
+        <meta property="og:url" content="https://alcheez.com/" />
+        <meta property="og:title" content="AlCheez Online Store" />
+        <meta property="og:description" content="Shop the latest electronics, gadgets, and tech accessories at AlCheez. Discover unbeatable prices and top-quality products today!" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://alcheez.com/android-chrome-384x384.png" />
+
+        {/* Twitter tags */}
+        {/* https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started */}
+        <meta property="twitter:site" content="@AlCheez" />
+        <meta property="twitter:title" content="AlCheez Online Store" />
+        <meta property="twitter:description" content="Check out the latest electronics, gadgets, and tech accessories at AlCheez. Your trusted online store for all things tech!" />
+        <meta property="twitter:creator" content="@AlCheez" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:image" content="https://alcheez.com/android-chrome-384x384.png" />
+
+        {/* https://moz.com/blog/meta-referrer-tag */}
+        <meta name="referrer" content="origin-when-crossorigin" />
+      </Helmet>
       <div className='whatsapp-icon'>
         <FaWhatsapp size={40} color="#25D366" onClick={openWhatsApp}/>
       </div>
@@ -93,50 +124,50 @@ export default function Home(props) {
         <h1>Headsets</h1>
         <div className='card_container'>
           {headsetsCardsArray}
+          <button className='view-all_button' onClick={()=>navigate("electronics/headsets")}>VIEW All</button>
         </div>
-        <button className='view-all_button' onClick={()=>navigate("electronics/headsets")}>VIEW All</button>
       </div>
       <div className='speakers_container'>
         <h1>Speakers</h1>
         <div className='card_container'>
           {speakersCardsArray}
+          <button className='view-all_button' onClick={()=>navigate("electronics/speakers")}>VIEW ALL</button>
         </div>
-        <button className='view-all_button' onClick={()=>navigate("electronics/speakers")}>VIEW ALL</button>
       </div>
       <div className='power-banks_container'>
         <h1>Power Banks</h1>
         <div className='card_container'>
           {powerBanksCardsArray}
-        </div>
-        <button className='view-all_button' onClick={()=>navigate("electronics/power-banks")}>VIEW ALL</button>
+          <button className='view-all_button' onClick={()=>navigate("electronics/power-banks")}>VIEW ALL</button>
+        </div>  
       </div>
       <div className='smart-watches_container'>
         <h1>Smart Watches</h1>
         <div className='card_container'>
           {smartWatchesCardsArray}
+          <button className='view-all_button ' onClick={()=>navigate("electronics/smart-watches")}>VIEW ALL</button>
         </div> 
-        <button className='view-all_button ' onClick={()=>navigate("electronics/smart-watches")}>VIEW ALL</button>
       </div>
       <div className='chargers-cables_container'>
         <h1>Chargers & Cables</h1>
         <div className='card_container'>
           {chargersCardsArray}
+          <button className='view-all_button ' onClick={()=>navigate("electronics/chargers-cables")}>VIEW ALL</button>
         </div> 
-        <button className='view-all_button ' onClick={()=>navigate("electronics/chargers-cables")}>VIEW ALL</button>
       </div>
       <div className='mobile-laptop-stands_container'>
         <h1>Mobile & Laptop Stands</h1>
         <div className='card_container'>
           {standsCardsArray}
+          <button className='view-all_button' onClick={()=>navigate("electronics/mobile-laptop-stands")}>VIEW ALL</button>
         </div> 
-        <button className='view-all_button' onClick={()=>navigate("electronics/mobile-laptop-stands")}>VIEW ALL</button>
       </div>
       <div className='smart-watches_container'>
         <h1>Protectors & Covers</h1>
         <div className='card_container'>
           {proctectsAndCablesCardsArray}
+          <button className='view-all_button '>VIEW ALL</button>
         </div> 
-        <button className='view-all_button '>VIEW ALL</button>
       </div>
   </div>
   )

@@ -47,12 +47,11 @@ function App() {
           <Route path="electronics/chargers-cables" element={<ChargerCables/>}/>
           <Route path="electronics/mobile-laptop-stands" element={<MobileLaptopStands/>}/>
 
-
           {/*<Route path="/track-order" element = {<TrackOrder/>} /> */}
           <Route path="/contact-us" element = {<ContactUs/>} />
           <Route path="/checkout" element = {<CheckOut />} />
           <Route path="/product-details/:id" element={<ProductDetails productsData = {productsData}/>} />
-          <Route path="/search-result" element = {<SearchResult />}/>
+          <Route path="/search-results" element = {<SearchResult />}/>
           <Route path="/order-complete" element = {<OrderComplete />}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
