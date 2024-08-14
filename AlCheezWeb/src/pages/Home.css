@@ -64,7 +64,7 @@
 .view-all_button {
   background-color: #1E3A8A;
   color: #ffffff;
-  width: 200px;
+  width: 220px;
   height: 40px;
   border: none;
   border-radius: 4px;
@@ -115,7 +115,7 @@ animation: blink 0.2s ease-in-out 2;
   }
 
   .view-all_button {
-    width: 100px;
+    width: 140px;
     height: 35px;
   }
 }

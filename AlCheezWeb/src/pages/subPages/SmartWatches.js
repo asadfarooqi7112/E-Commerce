@@ -5,6 +5,7 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { Helmet } from 'react-helmet-async';
 
 import "./SubProducts.css"
+import Loading from '../../components/Loading';
 
 export default function SmartWatches() {
   const isSmallDevice = useMediaQuery('(max-width: 768px)');
@@ -40,7 +41,9 @@ export default function SmartWatches() {
       <meta name="referrer" content="origin-when-crossorigin" />
     </Helmet>
 
-    <div className='headsets_products_container'>
+    {smartWatchesCardsArray.length>0
+    ?
+      <div className='headsets_products_container'>
       {!isSmallDevice
         ?
         <img src='https://vqvruapmkpjwdrrhnzfr.supabase.co/storage/v1/object/public/product_images/AdImages/Smart-Watch-Bigger-Screen-Ad.png' alt='smartwatch-image' className='subproduct-image'/>
@@ -52,6 +55,9 @@ export default function SmartWatches() {
         {smartWatchesCardsArray}
       </div>
     </div>
+    :
+    <Loading/>
+    }
   </div>
   )
 }

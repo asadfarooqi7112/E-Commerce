@@ -5,6 +5,8 @@ import ProductCard from '../components/ProductCard'
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { Helmet } from 'react-helmet-async';
 
+import Loading from '../components/Loading';
+
 export default function Electronics(props) {
   const isSmallDevice = useMediaQuery('(max-width: 768px)');
   const allProductsCardsArray = props.productsData.map((item,index)=><ProductCard key={index} data = {item} />)
@@ -41,7 +43,9 @@ export default function Electronics(props) {
         <meta name="referrer" content="origin-when-crossorigin" />
       </Helmet>
       
-      <div className='products_container'>
+      {allProductsCardsArray.length>0
+      ?
+        <div className='products_container'>
         {!isSmallDevice
           ?
           <img src='https://vqvruapmkpjwdrrhnzfr.supabase.co/storage/v1/object/public/product_images/AdImages/electronics-main-photo-larger-screen.png' alt='electronics-image' className='subproduct-image'/>
@@ -53,6 +57,9 @@ export default function Electronics(props) {
           {allProductsCardsArray}
         </div>
       </div>
+      :
+      <Loading/>
+      }
     </div>
   )
 }

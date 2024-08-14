@@ -17,6 +17,7 @@ import chargerCableLogo from "../images/charger-cable-logo-removebg-preview.png"
 import mobileLaptopStandLogo from "../images/mobile-laptop-stand-logo-removebg-preview.png"
 
 import { Helmet } from 'react-helmet-async';
+import Loading from '../components/Loading';
 
 export default function Home(props) {
   const navigate = useNavigate()
@@ -85,6 +86,9 @@ export default function Home(props) {
         {/* https://moz.com/blog/meta-referrer-tag */}
         <meta name="referrer" content="origin-when-crossorigin" />
       </Helmet>
+      {headsetsCardsArray.length>0
+      ?
+      <>
       <div className='whatsapp-icon'>
         <FaWhatsapp size={40} color="#25D366" onClick={openWhatsApp}/>
       </div>
@@ -169,6 +173,8 @@ export default function Home(props) {
           <button className='view-all_button '>VIEW ALL</button>
         </div> 
       </div>
+      </>:
+      <Loading/>}
   </div>
   )
 }

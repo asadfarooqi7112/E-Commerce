@@ -5,6 +5,7 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { Helmet } from 'react-helmet-async';
 
 import "./SubProducts.css"
+import Loading from '../../components/Loading';
 
 export default function Speakers() {
   const isSmallDevice = useMediaQuery('(max-width: 768px)');
@@ -39,7 +40,9 @@ export default function Speakers() {
       <meta name="referrer" content="origin-when-crossorigin" />
     </Helmet>
 
-    <div className='headsets_products_container'>
+    {speakersCardsArray.length>0
+    ?
+      <div className='headsets_products_container'>
     {!isSmallDevice
       ?
       <img src='https://vqvruapmkpjwdrrhnzfr.supabase.co/storage/v1/object/public/product_images/AdImages/Speaker-Bigger-Screen-Ad.png?t=2024-07-28T16%3A41%3A48.294Z' alt='speakers-image' className='subproduct-image'/>
@@ -51,6 +54,9 @@ export default function Speakers() {
         {speakersCardsArray}
       </div>
     </div>
+    :
+    <Loading/>
+    }
   </div>
   )
 }

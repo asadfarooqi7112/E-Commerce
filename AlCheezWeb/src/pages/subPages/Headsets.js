@@ -5,6 +5,7 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { Helmet } from 'react-helmet-async';
 
 import "./SubProducts.css"
+import Loading from '../../components/Loading';
 
 export default function Headsets() {
   const isSmallDevice = useMediaQuery('(max-width: 768px)');
@@ -39,6 +40,8 @@ export default function Headsets() {
         <meta name="referrer" content="origin-when-crossorigin" />
       </Helmet>
 
+{ headsetsCardsArray.length>0
+?
     <div className='headsets_products_container'>
         {!isSmallDevice
         ?
@@ -51,6 +54,9 @@ export default function Headsets() {
           {headsetsCardsArray}
         </div>
     </div>
+    :
+    <Loading/>
+    }
   </div>
   )
 }

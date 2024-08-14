@@ -5,6 +5,7 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { Helmet } from 'react-helmet-async';
 
 import "./SubProducts.css"
+import Loading from '../../components/Loading';
 
 export default function PowerBanks() {
   const isSmallDevice = useMediaQuery('(max-width: 768px)');
@@ -39,19 +40,23 @@ export default function PowerBanks() {
         {/* Referrer */}
         <meta name="referrer" content="origin-when-crossorigin" />
       </Helmet>
-
+      {powerBanksCardsArray.length>0
+      ?
+        <div className='headsets_products_container'>
       {!isSmallDevice
         ?
         <img src='https://vqvruapmkpjwdrrhnzfr.supabase.co/storage/v1/object/public/product_images/AdImages/Power-Bank-Bigger-Screen-Ad.png' alt='powerbank-image' className='subproduct-image'/>
         :
         <img src='https://vqvruapmkpjwdrrhnzfr.supabase.co/storage/v1/object/public/product_images/AdImages/Power-Bank-Smaller-Screen-Ad.png' alt='powerbank-image' className='subproduct-image'/>
       }
-      <div className='headsets_products_container'>
-      <h1>Power Banks</h1>
+        <h1>Power Banks</h1>
       <div className='headsets-card_container'>
-        {powerBanksCardsArray}
+          {powerBanksCardsArray}
+        </div>
       </div>
-    </div>
+      :
+      <Loading/>
+    }
   </div>
   )
 }
