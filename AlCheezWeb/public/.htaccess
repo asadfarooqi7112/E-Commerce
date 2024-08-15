@@ -19,7 +19,7 @@ Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 Header set X-Frame-Options "DENY"
 
 # Set Content Security Policy (CSP)
-Header set Content-Security-Policy "default-src 'self'; script-src 'self' https://trusted.cdn.com; object-src 'none'; base-uri 'self';"
+Header set Content-Security-Policy "default-src 'self'; script-src 'self' https://trusted.cdn.com; connect-src 'self' https://vqvruapmkpjwdrrhnzfr.supabase.co; object-src 'none'; base-uri 'self';"
 
 # Referrer Policy
 Header set Referrer-Policy "no-referrer-when-downgrade"
