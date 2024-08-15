@@ -110,8 +110,6 @@ const ProductDetails = (props) => {
     return <Loading/>;
   }
 
-  console.log("assd",product.description.replace(/<\/?[^>]+(>|$)/g, ""))
-
   return (
     <div className='product_details_page_container '>
       <Helmet>

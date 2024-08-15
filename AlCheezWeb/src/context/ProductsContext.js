@@ -33,7 +33,6 @@ export const ProductsProvider = ({ children }) => {
         console.error('Error fetching products:', error);
       } else {
         setProductsData(data);
-        console.log(data)
       }
     };
 

@@ -118,7 +118,6 @@ export default function CheckOut() {
       if (orderItemsError) {
         console.error('Error creating order items:', orderItemsError);
       } else {
-        console.log('Order created successfully:', order);
         navigate("/order-complete");
         emptyCart();
       }
