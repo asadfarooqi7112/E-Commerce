@@ -19,7 +19,17 @@ Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 Header set X-Frame-Options "DENY"
 
 # Set Content Security Policy (CSP)
-Header set Content-Security-Policy "default-src 'self'; script-src 'self' https://connect.facebook.net https://trusted.cdn.com; connect-src 'self' https://vqvruapmkpjwdrrhnzfr.supabase.co https://www.facebook.com; img-src 'self' https://vqvruapmkpjwdrrhnzfr.supabase.co/storage/v1/object/public/product_images/ https://www.facebook.com; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none';"
+Header set Content-Security-Policy "
+  default-src 'self';
+  script-src 'self' https://connect.facebook.net https://trusted.cdn.com;
+  connect-src 'self' https://vqvruapmkpjwdrrhnzfr.supabase.co https://www.facebook.com;
+  img-src 'self' https://vqvruapmkpjwdrrhnzfr.supabase.co/storage/v1/object/public/product_images/ https://www.facebook.com data:;
+  font-src 'self' https://fonts.gstatic.com data:;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  object-src 'none';
+  base-uri 'self';
+  frame-ancestors 'none';
+"
 
 # Referrer Policy
 Header set Referrer-Policy "no-referrer-when-downgrade"
