@@ -52,6 +52,7 @@ export default function SearchBar() {
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
+            window.fbq('track', 'Search', {search_string: input});
             navigate(`/search-results?query=${encodeURIComponent(input)}`);
             setSearchResult(result);
             setSearchWord(input);
@@ -73,6 +74,7 @@ export default function SearchBar() {
                     onKeyDown={handleKeyDown}
                 />
                 <FaSearch className="search-bar-icon" onClick={() => {
+                    window.fbq('track', 'Search', {search_string: input});
                     navigate(`/search-results?query=${encodeURIComponent(input)}`);
                     setSearchResult(result);
                     setSearchWord(input);
