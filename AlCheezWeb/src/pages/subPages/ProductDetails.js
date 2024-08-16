@@ -115,7 +115,7 @@ const ProductDetails = (props) => {
       <Helmet>
         <html lang="en" />
         <title>{product.name}</title>
-        <meta name="description" content={product.description.replace(/<\/?[^>]+(>|$)/g, "")} />
+        <meta name="description" content={product.description.replace(/<\/?[^>]+(>|$)/g, "").slice(0,160)} />
         <link rel="canonical" href={`https://www.alcheez.com/product-details/${params.id}`}/>
         <meta name="keywords" content={`${product.name}, buy ${product.name} online, ${product.name} price, alcheez, electronics, headset, headphone, handsfree, earphone, airpods, earbuds, speaker, smart watch, charger, cable, mobile stand, laptop stand, power bank, tech accessories, electronic gadgets, affordable tech, best tech deals, online electronics store`} />
         <meta name="robots" content="index, follow" />
@@ -170,16 +170,18 @@ const ProductDetails = (props) => {
         {/* OG Tags */}
         {/* https://ogp.me/ */}
         <meta property="og:title" content={product.name} />
-        <meta property="og:description" content={product.description.replace(/<\/?[^>]+(>|$)/g, "")} />
+        <meta property="og:description" content={product.description.replace(/<\/?[^>]+(>|$)/g, "").slice(0,160)} />
         <meta property="og:type" content="product" />
         <meta property="og:image" content={product.productimages[0].image_url} />
         <meta property="og:url" content={`https://www.alcheez.com/product-details/${params.id}`} />
+        <meta property="og:price:amount" content={product.sale_price || product.price} />
+        <meta property="og:price:currency" content="PKR" />
 
         {/* Twitter tags */}
         {/* https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started */}
         <meta property="twitter:site" content="@AlCheez" />
         <meta property="twitter:title" content={product.name} />
-        <meta property="twitter:description" content={product.description.replace(/<\/?[^>]+(>|$)/g, "")} />
+        <meta property="twitter:description" content={product.description.replace(/<\/?[^>]+(>|$)/g, "").slice(0,160)} />
         <meta property="twitter:creator" content="@AlCheez" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:image" content={product.productimages[0].image_url} />
