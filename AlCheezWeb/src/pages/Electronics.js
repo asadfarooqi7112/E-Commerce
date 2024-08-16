@@ -16,7 +16,7 @@ export default function Electronics(props) {
       <Helmet>
         <html lang="en" />
         <title>Electronics | AlCheez</title>
-        <meta name="description" content="Welcome to AlCheez, your one-stop shop for the latest electronics, gadgets, and tech accessories. Explore our wide range of products today!" />
+        <meta name="description" content="Discover the best in electronics at AlCheez! From cutting-edge gadgets to top-quality tech accessories, find everything you need to stay connected and powered up. Shop our extensive collection of electronics today!" />
         <link rel="canonical" href="https://alcheez.com/electronics" />
         <meta name="keywords" content="alcheez, electronics, headset, headphone, handsfree, earphone, airpods, earbuds, speaker, smart watch, charger, cable, mobile stand, laptop stand, power bank, tech accessories, online electronics store" />
         <meta name="robots" content="index, follow" />
