@@ -47,7 +47,7 @@ export default function ContactUs() {
       <Helmet>
         <html lang="en" />
         <title>Contact Us | AlCheez</title>
-        <meta name="description" content="Get in touch with AlCheez for support, inquiries, or feedback. Contact us via WhatsApp, email, or leave a message." />
+        <meta name="description" content="Get in touch with AlCheez for support, inquiries, or feedback. Contact us via WhatsApp, email, or leave a message." data-rh="true"/>
         <link rel="canonical" href="https://alcheez.com/contact-us" />
         <meta name="keywords" content="contact, AlCheez, customer support, WhatsApp, email, feedback, inquiries" />
         <meta name="robots" content="index, follow" />
