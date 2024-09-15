@@ -18,13 +18,16 @@ export default function ProductCard(props) {
                 <p className='p-original_price'>
                     <span className='line_through'>Rs. {props.data.price}</span> -{Math.round((props.data.price - props.data.sale_price) * 100 / props.data.price)}%
                 </p>
+                {props.data.sale_price>=1000 && <p style={{ color: 'green', fontSize: '16px' }}>Free Shipping</p>}
             </div>
             :
             <div onClick={() => navigate(`/product-details/${props.data.product_id}`)}>
                 <p className='product_name'>{props.data.name}</p>
                 <p className='price'>Rs. {props.data.price}</p>
+                {props.data.sale_price>=1000 && <p style={{ color: 'green', fontSize: '16px' }}>Free Shipping</p>}
             </div>
             }
         </div>
     );
 }
+

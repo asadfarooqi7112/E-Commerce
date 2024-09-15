@@ -11,7 +11,6 @@ import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { Helmet } from 'react-helmet-async';
 
 export default function CheckOut() {
-  const DeliverCharges = 200;
   const { cartItems, emptyCart } = useShoppingCart();
   const {productsData} = useProductsContext();
   const [useSameAddress, setUseSameAddress] = useState(true);
@@ -45,6 +44,8 @@ export default function CheckOut() {
       return total + ((item?.sale_price ?? item?.price) || 0) * cartItem.quantity;
     }, 0);
   }, [cartItems, productsData]);
+
+  const DeliverCharges = Subtotal>=1000 ? 0 : 200;
 
   const Total = Subtotal + DeliverCharges;
 

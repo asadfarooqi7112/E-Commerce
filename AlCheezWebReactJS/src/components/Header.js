@@ -8,6 +8,7 @@ import HamburgerButton from './HamburgerButton';
 import SearchBar from './SearchBar';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { BsCart } from 'react-icons/bs';
+import FreeShippingBanner from './FreeShippingBanner';
 
 import logo from "../images/logo for web.png"
 
@@ -25,6 +26,8 @@ export default function Header() {
   return (
     <div>
       {!isSmallDevice ? (
+        <>
+        <FreeShippingBanner/>
         <div className='header_container'>
           <Link to="/" className='header_title'><img src={logo} style={{width: "50px",height:"50px"}} alt='site-logo'/>ALCHEEZ</Link>
           <SearchBar />
@@ -70,7 +73,10 @@ export default function Header() {
             {cartQuantity !== 0 && <div className='cart-item-counter'>{cartQuantity}</div>}
           </button>
         </div>
+        </>
       ) : (
+        <>
+        <FreeShippingBanner/>
         <div style={{ display: "flex", flexDirection: "column", backgroundColor: "#F5F5F5", paddingBottom: "10px" }}>
           <div className='header_container_smaller_devices'>
             <div onClick={() => setSideMenu(true)}>
@@ -135,6 +141,7 @@ export default function Header() {
           </div>
           <SearchBar />
         </div>
+        </>
       )}
     </div>
   );

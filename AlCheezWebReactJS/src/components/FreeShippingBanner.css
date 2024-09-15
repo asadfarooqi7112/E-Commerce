@@ -1,0 +1,74 @@
+.banner-container {
+    width: 100%; /* Full width of the screen */
+    overflow: hidden; /* Hide the text once it moves out of view */
+    background-color: #333333; /* Dark Gray background */
+    color: #FFD700; /* Gold text */    
+    position: relative;
+    text-align: center; /* Aligns text centrally within the container */
+    height: 40px;
+  }
+  
+.banner-text {
+    display: inline-block;
+    white-space: nowrap; /* Prevents text from wrapping */
+    position: relative;
+    animation: slide-left 14s linear infinite; /* Animation to move text */
+    font-size: 18px;
+    margin-top: 5px;
+  }
+  
+@keyframes slide-left {
+    0% {
+      transform: translateX(250%); /* Start off the screen to the right */
+    }
+    100% {
+      transform: translateX(-250%); /* Move completely off-screen to the left */
+    }
+  }
+/* Styles for larger devices */
+@media(min-width: 1440px) {
+    .banner-container {
+      height: 50px;
+    }
+    
+    .banner-text {
+      font-size: 20px;
+      margin-top: 8px;
+      animation: slide-left 16s linear infinite; /* Slower animation for larger screens */
+    }
+    
+    @keyframes slide-left {
+      0% {
+          transform: translateX(300%); /* Start further off-screen */
+      }
+      100% {
+          transform: translateX(-300%); /* Move further off-screen */
+      }
+    }
+  }
+
+
+@media(max-width:768px){
+.banner-container {
+    height: 30px;
+        
+    }
+  
+.banner-text {
+    font-size: 14px;
+    margin-top: 0px;
+    animation: slide-left 10s linear infinite; /* Animation to move text */
+    }
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(200%); /* Start off the screen to the right */
+    }
+    100% {
+        transform: translateX(-200%); /* Move completely off-screen to the left */
+    }
+    }
+    
+
+
+}

@@ -1,5 +1,5 @@
 .p-card_container {
-    width: 225px;
+    width: 250px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -7,6 +7,10 @@
     margin-bottom: 20px;
     background-color: #fff;
     cursor: pointer;
+    transition: transform 0.4s ease-out;
+}
+.p-card_container:hover{
+    transform: scale(1.05);
 }
 
 .p-card-image_container {

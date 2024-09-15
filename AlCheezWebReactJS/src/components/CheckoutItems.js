@@ -6,7 +6,6 @@ export default function CheckoutItems({id, color, quantity}) {
 const {productsData} = useProductsContext();
 
 const isSmallDevice = useMediaQuery('(max-width: 768px)');
-console.log(isSmallDevice)
 
 const item = productsData.find(item=>item.product_id===id)
 if(item==null) return null
