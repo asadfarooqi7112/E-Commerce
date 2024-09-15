@@ -56,7 +56,7 @@
   
 .banner-text {
     font-size: 14px;
-    margin-top: 0px;
+    margin-top: 4px;
     animation: slide-left 10s linear infinite; /* Animation to move text */
     }
 
